@@ -298,6 +298,23 @@ try {
 		zwavejs::abortInclusion();
 		ajax::success();
 	}
+// lxrootard
+	if (init('action') == 'testRemoteZWave') {
+		zwavejs::remoteZwaveIsAlive();
+        	ajax::success();
+    	}
+
+        if (init('action') == 'installZWaveJS') {
+                zwavejs::executeAsync ('installZWaveJS');
+                ajax::success();
+        }
+
+        if (init('action') == 'uninstallZWaveJS') {
+                zwavejs::uninstallZWaveJS();
+                event::add('jeedom::alert', array('level' => 'info', 'page' => 'zwavejs',
+                'message' => __("Deamon local zwave-js-ui désinstallé", __FILE__)));
+                ajax::success();
+        }
 
 	throw new Exception(__('Aucune méthode correspondante', __FILE__));
 	/*     * *********Catch exeption*************** */

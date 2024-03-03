@@ -259,6 +259,11 @@ function printEqLogic(_eqLogic) {
       modifyWithoutSave = false
     }
   })
+// lxrootard
+// lance une tempo pour laisser le temps au core d'executer tous les addCmdToTable
+  setTimeout(() => {
+    $('table.tablesorter').trigger('update') // update de tablesorter
+  }, "1000");
 }
 
 
